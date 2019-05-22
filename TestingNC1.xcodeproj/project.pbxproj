@@ -12,6 +12,14 @@
 		B917CE262291B2B3000447BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B917CE242291B2B3000447BD /* Main.storyboard */; };
 		B917CE282291B2B5000447BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B917CE272291B2B5000447BD /* Assets.xcassets */; };
 		B917CE2B2291B2B5000447BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B917CE292291B2B5000447BD /* LaunchScreen.storyboard */; };
+		B91E665E229314420090F513 /* OpeningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91E665D229314420090F513 /* OpeningController.swift */; };
+		B982007722955A6000B53D43 /* AudioPlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982007622955A6000B53D43 /* AudioPlayerModel.swift */; };
+		B982007922955D8300B53D43 /* AudioCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982007822955D8300B53D43 /* AudioCollection.swift */; };
+		B9DAA8AB229410190037EAD2 /* circus_celebration_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B9DAA8A6229410180037EAD2 /* circus_celebration_sound.mp3 */; };
+		B9DAA8AC229410190037EAD2 /* chimp_roll_button_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B9DAA8A7229410180037EAD2 /* chimp_roll_button_sound.mp3 */; };
+		B9DAA8AD229410190037EAD2 /* chimp_celebration_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B9DAA8A8229410180037EAD2 /* chimp_celebration_sound.mp3 */; };
+		B9DAA8AE229410190037EAD2 /* chimp_stay_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B9DAA8A9229410190037EAD2 /* chimp_stay_sound.mp3 */; };
+		B9DAA8AF229410190037EAD2 /* chimp_acrobat_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B9DAA8AA229410190037EAD2 /* chimp_acrobat_sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +30,14 @@
 		B917CE272291B2B5000447BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B917CE2A2291B2B5000447BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B917CE2C2291B2B5000447BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B91E665D229314420090F513 /* OpeningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningController.swift; sourceTree = "<group>"; };
+		B982007622955A6000B53D43 /* AudioPlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerModel.swift; sourceTree = "<group>"; };
+		B982007822955D8300B53D43 /* AudioCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollection.swift; sourceTree = "<group>"; };
+		B9DAA8A6229410180037EAD2 /* circus_celebration_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = circus_celebration_sound.mp3; path = Asset/circus_celebration_sound.mp3; sourceTree = SOURCE_ROOT; };
+		B9DAA8A7229410180037EAD2 /* chimp_roll_button_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimp_roll_button_sound.mp3; path = Asset/chimp_roll_button_sound.mp3; sourceTree = SOURCE_ROOT; };
+		B9DAA8A8229410180037EAD2 /* chimp_celebration_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimp_celebration_sound.mp3; path = Asset/chimp_celebration_sound.mp3; sourceTree = SOURCE_ROOT; };
+		B9DAA8A9229410190037EAD2 /* chimp_stay_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimp_stay_sound.mp3; path = Asset/chimp_stay_sound.mp3; sourceTree = SOURCE_ROOT; };
+		B9DAA8AA229410190037EAD2 /* chimp_acrobat_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chimp_acrobat_sound.mp3; path = Asset/chimp_acrobat_sound.mp3; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +54,7 @@
 		B917CE142291B2B3000447BD = {
 			isa = PBXGroup;
 			children = (
+				B91E665F229321150090F513 /* AudioFile */,
 				B917CE1F2291B2B3000447BD /* TestingNC1 */,
 				B917CE1E2291B2B3000447BD /* Products */,
 			);
@@ -56,12 +73,27 @@
 			children = (
 				B917CE202291B2B3000447BD /* AppDelegate.swift */,
 				B917CE222291B2B3000447BD /* ViewController.swift */,
+				B91E665D229314420090F513 /* OpeningController.swift */,
 				B917CE242291B2B3000447BD /* Main.storyboard */,
 				B917CE272291B2B5000447BD /* Assets.xcassets */,
 				B917CE292291B2B5000447BD /* LaunchScreen.storyboard */,
 				B917CE2C2291B2B5000447BD /* Info.plist */,
+				B982007622955A6000B53D43 /* AudioPlayerModel.swift */,
+				B982007822955D8300B53D43 /* AudioCollection.swift */,
 			);
 			path = TestingNC1;
+			sourceTree = "<group>";
+		};
+		B91E665F229321150090F513 /* AudioFile */ = {
+			isa = PBXGroup;
+			children = (
+				B9DAA8AA229410190037EAD2 /* chimp_acrobat_sound.mp3 */,
+				B9DAA8A8229410180037EAD2 /* chimp_celebration_sound.mp3 */,
+				B9DAA8A7229410180037EAD2 /* chimp_roll_button_sound.mp3 */,
+				B9DAA8A9229410190037EAD2 /* chimp_stay_sound.mp3 */,
+				B9DAA8A6229410180037EAD2 /* circus_celebration_sound.mp3 */,
+			);
+			path = AudioFile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +155,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B917CE2B2291B2B5000447BD /* LaunchScreen.storyboard in Resources */,
+				B9DAA8AF229410190037EAD2 /* chimp_acrobat_sound.mp3 in Resources */,
+				B9DAA8AD229410190037EAD2 /* chimp_celebration_sound.mp3 in Resources */,
 				B917CE282291B2B5000447BD /* Assets.xcassets in Resources */,
+				B9DAA8AE229410190037EAD2 /* chimp_stay_sound.mp3 in Resources */,
+				B9DAA8AB229410190037EAD2 /* circus_celebration_sound.mp3 in Resources */,
+				B9DAA8AC229410190037EAD2 /* chimp_roll_button_sound.mp3 in Resources */,
 				B917CE262291B2B3000447BD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +174,9 @@
 			files = (
 				B917CE232291B2B3000447BD /* ViewController.swift in Sources */,
 				B917CE212291B2B3000447BD /* AppDelegate.swift in Sources */,
+				B982007922955D8300B53D43 /* AudioCollection.swift in Sources */,
+				B982007722955A6000B53D43 /* AudioPlayerModel.swift in Sources */,
+				B91E665E229314420090F513 /* OpeningController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
