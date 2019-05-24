@@ -12,6 +12,7 @@
 		B917CE262291B2B3000447BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B917CE242291B2B3000447BD /* Main.storyboard */; };
 		B917CE282291B2B5000447BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B917CE272291B2B5000447BD /* Assets.xcassets */; };
 		B917CE2B2291B2B5000447BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B917CE292291B2B5000447BD /* LaunchScreen.storyboard */; };
+		B918476A2297F2C20034C5B9 /* BananaEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91847692297F2C20034C5B9 /* BananaEmitter.swift */; };
 		B91E665E229314420090F513 /* OpeningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91E665D229314420090F513 /* OpeningController.swift */; };
 		B982007722955A6000B53D43 /* AudioPlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982007622955A6000B53D43 /* AudioPlayerModel.swift */; };
 		B982007922955D8300B53D43 /* AudioCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982007822955D8300B53D43 /* AudioCollection.swift */; };
@@ -30,6 +31,7 @@
 		B917CE272291B2B5000447BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B917CE2A2291B2B5000447BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B917CE2C2291B2B5000447BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B91847692297F2C20034C5B9 /* BananaEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BananaEmitter.swift; sourceTree = "<group>"; };
 		B91E665D229314420090F513 /* OpeningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningController.swift; sourceTree = "<group>"; };
 		B982007622955A6000B53D43 /* AudioPlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerModel.swift; sourceTree = "<group>"; };
 		B982007822955D8300B53D43 /* AudioCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollection.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				B917CE2C2291B2B5000447BD /* Info.plist */,
 				B982007622955A6000B53D43 /* AudioPlayerModel.swift */,
 				B982007822955D8300B53D43 /* AudioCollection.swift */,
+				B91847692297F2C20034C5B9 /* BananaEmitter.swift */,
 			);
 			path = TestingNC1;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				B982007922955D8300B53D43 /* AudioCollection.swift in Sources */,
 				B982007722955A6000B53D43 /* AudioPlayerModel.swift in Sources */,
 				B91E665E229314420090F513 /* OpeningController.swift in Sources */,
+				B918476A2297F2C20034C5B9 /* BananaEmitter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

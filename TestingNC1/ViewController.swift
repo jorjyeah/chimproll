@@ -20,8 +20,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
     @IBOutlet weak var word: UIImageView!
     
     var lastRotation: CGFloat = 0
-    var counter = 0.0
-    var timer = Timer()
+    var counterPerRotation = 0.0
     var moodLevel: Double = 0.0
     let audioCollection = AudioCollection()
     
@@ -40,6 +39,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         background.backgroundColor = #colorLiteral(red: 1, green: 0.9496994592, blue: 0.7835138326, alpha: 1)
         audioCollection.stopPlayingAudio()
         audioCollection.chimpStay.playAudio()
+        
         bananaConfetti()
         
         let pan = UIPanGestureRecognizer(target: self, action:#selector(self.pan))
@@ -62,6 +62,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         let deltaY = location.y - view.center.y
         let deltaX = location.x - view.center.x
         let angle = atan2(deltaY, deltaX) * 180 / .pi
+        counterPerRotation += 0.1
         return angle < 0 ? abs(angle) : 360 - angle
     }
     
@@ -74,21 +75,21 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         switch gesture.state {
         case .began:
             startRotationAngle = angle(from: location)
-            chimpImage.image = UIImage(named: "chimp_acrobat")
+            moodLevel = Double .random(in: 50 ... 80)
             audioCollection.stopPlayingAudio()
             audioCollection.chimpAcrobat.playAudio()
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
-            moodLevel = Double .random(in: 15 ... 20)
+            self.chimpImage.image = UIImage(named: "chimp_acrobat")
         case .changed:
             rotate(to: rotation - gestureRotation.degreesToRadians)
-            moodIndicatorColorChanger()
+            moodIndicatorChanged()
         case .ended:
             rotation -= gestureRotation.degreesToRadians
-            moodChimpChanger()
-            timer.invalidate()
-            moodIndicatorColorChanger()
+            print(rotation)
+            print(counterPerRotation)
+            chimpCelebrationCheck()
+            counterPerRotation = 0
         default :
-            break
+            counterPerRotation = 0
         }
         UserDefaults.standard.rotation = rotation
     }
@@ -105,80 +106,63 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         chimpImage.layer.add(rotateAnimation, forKey: "transform.rotation.z")
     }
     
-    @objc func UpdateTimer() {
-        counter = counter + 0.1
-    }
-    
     @IBAction func backToOpening(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    func moodIndicatorColorChanger(){
-        UIView.animate(withDuration: 0.2, animations: {
-            if self.counter < self.moodLevel*0.4{
-                self.word.image = UIImage(named: "roll")
-                self.moodIndicator.layer.borderColor = #colorLiteral(red: 0.8858358305, green: 0.5235362993, blue: 0.4429179152, alpha: 1)
-            } else if self.counter >= self.moodLevel*0.4 && self.counter < self.moodLevel*0.75{
-                self.word.image = UIImage(named: "faster")
-                self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.7878941623, blue: 0.624411387, alpha: 1)
-            } else if self.counter >= self.moodLevel*0.75 && self.counter < self.moodLevel{
-                self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.9034691654, blue: 0.6462703339, alpha: 1)
-            } else if self.counter >= self.moodLevel{
-                self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.8358077748, blue: 0.3983304795, alpha: 1)
-            }
-        })
+    func moodIndicatorChanged(){
+        if self.counterPerRotation < self.moodLevel*0.4{
+            self.word.image = UIImage(named: "roll")
+            self.moodIndicator.layer.borderColor = #colorLiteral(red: 0.8858358305, green: 0.5235362993, blue: 0.4429179152, alpha: 1)
+        } else if self.counterPerRotation >= self.moodLevel*0.4 && self.counterPerRotation < self.moodLevel*0.75{
+            self.word.image = UIImage(named: "faster")
+            self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.7878941623, blue: 0.624411387, alpha: 1)
+        } else if self.counterPerRotation >= self.moodLevel*0.75 && self.counterPerRotation < self.moodLevel{
+            self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.9034691654, blue: 0.6462703339, alpha: 1)
+        } else if self.counterPerRotation >= self.moodLevel{
+            self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.8358077748, blue: 0.3983304795, alpha: 1)
+        }
     }
-    
-    func moodChimpChanger(){
+
+    func chimpCelebrationCheck(){
         audioCollection.stopPlayingAudio()
-        print(self.counter)
         print(self.moodLevel)
-        if self.counter >= self.moodLevel{
+        if self.counterPerRotation >= self.moodLevel{
+            // celebaration
             self.audioCollection.chimpCelebration.playAudio()
             self.audioCollection.circusCelebration.playAudio()
             self.chimpImage.image = UIImage(named: "chimp_celebration_1")
             self.word.image = UIImage(named: "yay")
             bananaConfetti()
-//            UIView.animate(withDuration: 10, animations: {
-//                self.chimpImage.image = UIImage(named: "chimp_celebration_1")
-//                self.word.image = UIImage(named: "yay")
-//                self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.8358077748, blue: 0.3983304795, alpha: 1)
-//            }) { finished in
-//                if finished {
-//                    UIView.animate(withDuration: 0, delay: 10,animations: {
-//                        print("reseting to initial state after doing some celebration")
-//                        self.word.image = UIImage(named: "roll")
-//                        self.chimpImage.image = UIImage(named: "chimp_stay")
-//                        self.audioCollection.stopPlayingAudio()
-//                        self.audioCollection.chimpStay.playAudio()
-//                    })
-//                }
-//            }
         } else{
             // reset
             print("reseting to initial state")
             chimpImage.image = UIImage(named: "chimp_stay")
             audioCollection.chimpStay.playAudio()
+            counterPerRotation = 0
+            moodIndicatorChanged()
         }
-        counter = 0.0
     }
     
     func bananaConfetti(){
-        let bananaEmitter = CAEmitterLayer()
-        bananaEmitter.emitterPosition = CGPoint(x: 0, y: 0)
-        bananaEmitter.emitterShape = .line
-        bananaEmitter.emitterSize = CGSize(width: view.frame.size.width, height: 1)
-        let cell = CAEmitterCell()
-        cell.birthRate = 3
-        cell.lifetime = 7.0
-        cell.lifetimeRange = 0
-        cell.velocity = 200
-        cell.velocityRange = 50
-        cell.emissionLongitude = CGFloat.pi
-        cell.emissionRange = CGFloat.pi / 4
-        cell.contents = UIImage(named: "banana")
-        bananaEmitter.emitterCells = [cell]
-        moodIndicator.layer.addSublayer(bananaEmitter)
+        let bananaEmitterUp = BananaEmitter.get(with: #imageLiteral(resourceName: "banana"), emissionLongitudeDegree: 0.0)
+        let bananaEmitterRight = BananaEmitter.get(with: #imageLiteral(resourceName: "banana"), emissionLongitudeDegree: 90)
+        let bananaEmitterLeft = BananaEmitter.get(with: #imageLiteral(resourceName: "banana"), emissionLongitudeDegree: 90)
+        let bananaEmitterDown = BananaEmitter.get(with: #imageLiteral(resourceName: "banana"), emissionLongitudeDegree: 180.0)
+        bananaEmitterUp.emitterPosition = CGPoint(x: view.frame.width / 2, y: 376)
+        bananaEmitterUp.emitterShape = .line
+        bananaEmitterUp.emitterSize = CGSize(width: 151, height: 0)
+//        bananaEmitterRight.emitterPosition = CGPoint(x: view.frame.width / 2, y: 376)
+//        bananaEmitterRight.emitterShape = .line
+//        bananaEmitterRight.emitterSize = CGSize(width: view.frame.size.width, height: 2)
+//        bananaEmitterLeft.emitterPosition = CGPoint(x: view.frame.width / 2, y: 376)
+//        bananaEmitterLeft.emitterShape = .line
+//        bananaEmitterLeft.emitterSize = CGSize(width: view.frame.size.width, height: 2)
+        bananaEmitterDown.emitterPosition = CGPoint(x: view.frame.width / 2, y: 520)
+        bananaEmitterDown.emitterShape = .line
+        bananaEmitterDown.emitterSize = CGSize(width: 151, height: 2)
+        view.layer.addSublayer(bananaEmitterUp)
+        view.layer.addSublayer(bananaEmitterDown)
     }
 }
 
