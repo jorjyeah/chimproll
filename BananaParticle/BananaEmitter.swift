@@ -22,17 +22,21 @@ class BananaEmitter {
         
         let cell = CAEmitterCell()
         cell.contents = image.cgImage
-        cell.birthRate = 80
-        cell.lifetime = 5
-        cell.velocity = CGFloat(80)
+        cell.birthRate = 7
+        cell.lifetime = 6
+        cell.lifetimeRange = 2
+        cell.velocity = CGFloat(90)
+        cell.yAcceleration = 12
 //        cell.duration = 5
         
         cell.emissionLongitude = emissionLongitudeDegree == 0.0 ? 0.0 : CGFloat((emissionLongitudeDegree * (.pi/180)))
         cell.emissionRange = (90 * (.pi/180))
         
         cell.scale = 0.3
-        cell.scaleRange = 0.2
+        cell.scaleRange = 0.3
         
+        cell.spin = 2.9
+        cell.spinRange = 0.9
         cells.append(cell)
         return cells
     }

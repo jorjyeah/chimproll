@@ -99,6 +99,10 @@
                                         <rect key="frame" x="93" y="108" width="228" height="228"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <skView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="glk-Gr-tCZ">
+                                        <rect key="frame" x="117" y="358" width="180" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </skView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -111,6 +115,7 @@
                     <navigationItem key="navigationItem" id="7PB-uG-CGP"/>
                     <connections>
                         <outlet property="background" destination="L6t-72-bmM" id="uvf-ry-1UK"/>
+                        <outlet property="bananaExplodeParticle" destination="glk-Gr-tCZ" id="b96-ao-9nu"/>
                         <outlet property="chimpImage" destination="wpP-HE-fDB" id="4hm-4m-SFV"/>
                         <outlet property="curtainBottom" destination="7yg-PL-c8Z" id="vWA-b6-DZU"/>
                         <outlet property="curtainTop" destination="cmd-Kf-Kts" id="NsO-ea-pfM"/>

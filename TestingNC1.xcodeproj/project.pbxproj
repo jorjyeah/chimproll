@@ -14,6 +14,7 @@
 		B917CE2B2291B2B5000447BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B917CE292291B2B5000447BD /* LaunchScreen.storyboard */; };
 		B918476A2297F2C20034C5B9 /* BananaEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91847692297F2C20034C5B9 /* BananaEmitter.swift */; };
 		B91E665E229314420090F513 /* OpeningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91E665D229314420090F513 /* OpeningController.swift */; };
+		B95F1334229859E600E4459F /* BananaExplode.sks in Resources */ = {isa = PBXBuildFile; fileRef = B95F1333229859E600E4459F /* BananaExplode.sks */; };
 		B982007722955A6000B53D43 /* AudioPlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982007622955A6000B53D43 /* AudioPlayerModel.swift */; };
 		B982007922955D8300B53D43 /* AudioCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982007822955D8300B53D43 /* AudioCollection.swift */; };
 		B9DAA8AB229410190037EAD2 /* circus_celebration_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B9DAA8A6229410180037EAD2 /* circus_celebration_sound.mp3 */; };
@@ -33,6 +34,7 @@
 		B917CE2C2291B2B5000447BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B91847692297F2C20034C5B9 /* BananaEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BananaEmitter.swift; sourceTree = "<group>"; };
 		B91E665D229314420090F513 /* OpeningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningController.swift; sourceTree = "<group>"; };
+		B95F1333229859E600E4459F /* BananaExplode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BananaExplode.sks; sourceTree = "<group>"; };
 		B982007622955A6000B53D43 /* AudioPlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerModel.swift; sourceTree = "<group>"; };
 		B982007822955D8300B53D43 /* AudioCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollection.swift; sourceTree = "<group>"; };
 		B9DAA8A6229410180037EAD2 /* circus_celebration_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = circus_celebration_sound.mp3; path = Asset/circus_celebration_sound.mp3; sourceTree = SOURCE_ROOT; };
@@ -57,6 +59,9 @@
 			isa = PBXGroup;
 			children = (
 				B91E665F229321150090F513 /* AudioFile */,
+				B95F1335229869C100E4459F /* AudioClass */,
+				B95F1336229869DB00E4459F /* Controller */,
+				B95F1337229869F000E4459F /* BananaParticle */,
 				B917CE1F2291B2B3000447BD /* TestingNC1 */,
 				B917CE1E2291B2B3000447BD /* Products */,
 			);
@@ -74,15 +79,10 @@
 			isa = PBXGroup;
 			children = (
 				B917CE202291B2B3000447BD /* AppDelegate.swift */,
-				B917CE222291B2B3000447BD /* ViewController.swift */,
-				B91E665D229314420090F513 /* OpeningController.swift */,
 				B917CE242291B2B3000447BD /* Main.storyboard */,
 				B917CE272291B2B5000447BD /* Assets.xcassets */,
 				B917CE292291B2B5000447BD /* LaunchScreen.storyboard */,
 				B917CE2C2291B2B5000447BD /* Info.plist */,
-				B982007622955A6000B53D43 /* AudioPlayerModel.swift */,
-				B982007822955D8300B53D43 /* AudioCollection.swift */,
-				B91847692297F2C20034C5B9 /* BananaEmitter.swift */,
 			);
 			path = TestingNC1;
 			sourceTree = "<group>";
@@ -97,6 +97,33 @@
 				B9DAA8A6229410180037EAD2 /* circus_celebration_sound.mp3 */,
 			);
 			path = AudioFile;
+			sourceTree = "<group>";
+		};
+		B95F1335229869C100E4459F /* AudioClass */ = {
+			isa = PBXGroup;
+			children = (
+				B982007622955A6000B53D43 /* AudioPlayerModel.swift */,
+				B982007822955D8300B53D43 /* AudioCollection.swift */,
+			);
+			path = AudioClass;
+			sourceTree = "<group>";
+		};
+		B95F1336229869DB00E4459F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B917CE222291B2B3000447BD /* ViewController.swift */,
+				B91E665D229314420090F513 /* OpeningController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B95F1337229869F000E4459F /* BananaParticle */ = {
+			isa = PBXGroup;
+			children = (
+				B91847692297F2C20034C5B9 /* BananaEmitter.swift */,
+				B95F1333229859E600E4459F /* BananaExplode.sks */,
+			);
+			path = BananaParticle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +192,7 @@
 				B9DAA8AB229410190037EAD2 /* circus_celebration_sound.mp3 in Resources */,
 				B9DAA8AC229410190037EAD2 /* chimp_roll_button_sound.mp3 in Resources */,
 				B917CE262291B2B3000447BD /* Main.storyboard in Resources */,
+				B95F1334229859E600E4459F /* BananaExplode.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

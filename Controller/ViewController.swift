@@ -8,8 +8,9 @@
 
 import UIKit
 import AVFoundation
+import SpriteKit
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlayerDelegate {
+class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlayerDelegate{
 
     
     @IBOutlet weak var curtainTop: UIImageView!
@@ -18,6 +19,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
     @IBOutlet weak var moodIndicator: UIView!
     @IBOutlet weak var chimpImage: UIImageView!
     @IBOutlet weak var word: UIImageView!
+    @IBOutlet weak var bananaExplodeParticle: SKView!
+    
     
     var lastRotation: CGFloat = 0
     var counterPerRotation = 0.0
@@ -40,7 +43,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         audioCollection.stopPlayingAudio()
         audioCollection.chimpStay.playAudio()
         
-        bananaConfetti()
+        bananaExplode()
+//        bananaConfetti()
         
         let pan = UIPanGestureRecognizer(target: self, action:#selector(self.pan))
         
@@ -146,23 +150,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
     
     func bananaConfetti(){
         let bananaEmitterUp = BananaEmitter.get(with: #imageLiteral(resourceName: "banana"), emissionLongitudeDegree: 0.0)
-        let bananaEmitterRight = BananaEmitter.get(with: #imageLiteral(resourceName: "banana"), emissionLongitudeDegree: 90)
-        let bananaEmitterLeft = BananaEmitter.get(with: #imageLiteral(resourceName: "banana"), emissionLongitudeDegree: 90)
         let bananaEmitterDown = BananaEmitter.get(with: #imageLiteral(resourceName: "banana"), emissionLongitudeDegree: 180.0)
         bananaEmitterUp.emitterPosition = CGPoint(x: view.frame.width / 2, y: 376)
         bananaEmitterUp.emitterShape = .line
         bananaEmitterUp.emitterSize = CGSize(width: 151, height: 0)
-//        bananaEmitterRight.emitterPosition = CGPoint(x: view.frame.width / 2, y: 376)
-//        bananaEmitterRight.emitterShape = .line
-//        bananaEmitterRight.emitterSize = CGSize(width: view.frame.size.width, height: 2)
-//        bananaEmitterLeft.emitterPosition = CGPoint(x: view.frame.width / 2, y: 376)
-//        bananaEmitterLeft.emitterShape = .line
-//        bananaEmitterLeft.emitterSize = CGSize(width: view.frame.size.width, height: 2)
         bananaEmitterDown.emitterPosition = CGPoint(x: view.frame.width / 2, y: 520)
         bananaEmitterDown.emitterShape = .line
-        bananaEmitterDown.emitterSize = CGSize(width: 151, height: 2)
+        bananaEmitterDown.emitterSize = CGSize(width: 50, height: 2)
         view.layer.addSublayer(bananaEmitterUp)
         view.layer.addSublayer(bananaEmitterDown)
+    }
+    
+    func bananaExplode(){
+        let emitter = SKEmitterNode(fileNamed: "BananaExplode.sks")!
+        emitter.position = CGPoint(x: view.frame.width / 2, y: 442)
+        addChild(<#T##childController: UIViewController##UIViewController#>)
+        emitter.removeFromParent()
     }
 }
 
