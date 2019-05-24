@@ -11,7 +11,7 @@ import AVFoundation
 class AudioCollection{
     var chimpStay = AudioPlayerClass(audioName: "chimp_stay_sound", fileFormat: "mp3", infiniteLoops: true)
     var chimpAcrobat = AudioPlayerClass(audioName: "chimp_acrobat_sound", fileFormat: "mp3", infiniteLoops: true)
-    var chimpCelebration = AudioPlayerClass(audioName: "chimp_celebration_sound", fileFormat: "mp3", infiniteLoops: true)
+    var chimpCelebration = AudioPlayerClass(audioName: "chimp_celebration_sound", fileFormat: "mp3", infiniteLoops: false)
     var circusCelebration = AudioPlayerClass(audioName: "circus_celebration_sound", fileFormat: "mp3", infiniteLoops: true)
     var chimpRollButton = AudioPlayerClass(audioName: "chimp_roll_button_sound", fileFormat: "mp3", infiniteLoops: false)
     

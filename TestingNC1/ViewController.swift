@@ -40,6 +40,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         background.backgroundColor = #colorLiteral(red: 1, green: 0.9496994592, blue: 0.7835138326, alpha: 1)
         audioCollection.stopPlayingAudio()
         audioCollection.chimpStay.playAudio()
+        bananaConfetti()
         
         let pan = UIPanGestureRecognizer(target: self, action:#selector(self.pan))
         
@@ -66,7 +67,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
     
     fileprivate var rotation: CGFloat = UserDefaults.standard.rotation
     fileprivate var startRotationAngle: CGFloat = 0
-    
     @objc func pan(_ gesture: UIPanGestureRecognizer) {
         let location = gesture.location(in: view)
         let gestureRotation = CGFloat(angle(from: location)) - startRotationAngle
@@ -84,12 +84,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
             moodIndicatorColorChanger()
         case .ended:
             rotation -= gestureRotation.degreesToRadians
-            timer.invalidate()
             moodChimpChanger()
-            // celebration & reset
-            word.image = UIImage(named: "yay")
-            self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.8358077748, blue: 0.3983304795, alpha: 1)
-            counter = 0.0
+            timer.invalidate()
             moodIndicatorColorChanger()
         default :
             break
@@ -97,16 +93,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         UserDefaults.standard.rotation = rotation
     }
     
-    @objc func UpdateTimer() {
-        counter = counter + 0.1
-    }
-    
-    @IBAction func backToOpening(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     fileprivate let rotateAnimation = CABasicAnimation()
-    
     func rotate(to: CGFloat, duration: Double = 0) {
         rotateAnimation.fromValue = to
         rotateAnimation.toValue = to
@@ -116,6 +103,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         rotateAnimation.fillMode = CAMediaTimingFillMode.forwards
         rotateAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         chimpImage.layer.add(rotateAnimation, forKey: "transform.rotation.z")
+    }
+    
+    @objc func UpdateTimer() {
+        counter = counter + 0.1
+    }
+    
+    @IBAction func backToOpening(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     func moodIndicatorColorChanger(){
@@ -136,14 +131,54 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
     
     func moodChimpChanger(){
         audioCollection.stopPlayingAudio()
+        print(self.counter)
+        print(self.moodLevel)
         if self.counter >= self.moodLevel{
-            chimpImage.image = UIImage(named: "chimp_celebration_1")
-            audioCollection.chimpCelebration.playAudio()
-            audioCollection.circusCelebration.playAudio()
+            self.audioCollection.chimpCelebration.playAudio()
+            self.audioCollection.circusCelebration.playAudio()
+            self.chimpImage.image = UIImage(named: "chimp_celebration_1")
+            self.word.image = UIImage(named: "yay")
+            bananaConfetti()
+//            UIView.animate(withDuration: 10, animations: {
+//                self.chimpImage.image = UIImage(named: "chimp_celebration_1")
+//                self.word.image = UIImage(named: "yay")
+//                self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.8358077748, blue: 0.3983304795, alpha: 1)
+//            }) { finished in
+//                if finished {
+//                    UIView.animate(withDuration: 0, delay: 10,animations: {
+//                        print("reseting to initial state after doing some celebration")
+//                        self.word.image = UIImage(named: "roll")
+//                        self.chimpImage.image = UIImage(named: "chimp_stay")
+//                        self.audioCollection.stopPlayingAudio()
+//                        self.audioCollection.chimpStay.playAudio()
+//                    })
+//                }
+//            }
         } else{
+            // reset
+            print("reseting to initial state")
             chimpImage.image = UIImage(named: "chimp_stay")
             audioCollection.chimpStay.playAudio()
         }
+        counter = 0.0
+    }
+    
+    func bananaConfetti(){
+        let bananaEmitter = CAEmitterLayer()
+        bananaEmitter.emitterPosition = CGPoint(x: 0, y: 0)
+        bananaEmitter.emitterShape = .line
+        bananaEmitter.emitterSize = CGSize(width: view.frame.size.width, height: 1)
+        let cell = CAEmitterCell()
+        cell.birthRate = 3
+        cell.lifetime = 7.0
+        cell.lifetimeRange = 0
+        cell.velocity = 200
+        cell.velocityRange = 50
+        cell.emissionLongitude = CGFloat.pi
+        cell.emissionRange = CGFloat.pi / 4
+        cell.contents = UIImage(named: "banana")
+        bananaEmitter.emitterCells = [cell]
+        moodIndicator.layer.addSublayer(bananaEmitter)
     }
 }
 
