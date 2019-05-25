@@ -19,13 +19,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
     @IBOutlet weak var moodIndicator: UIView!
     @IBOutlet weak var chimpImage: UIImageView!
     @IBOutlet weak var word: UIImageView!
-    @IBOutlet weak var bananaExplodeParticle: SKView!
-    
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var bananaSpriteView: SKView!
     
     var lastRotation: CGFloat = 0
     var counterPerRotation = 0.0
     var moodLevel: Double = 0.0
     let audioCollection = AudioCollection()
+    let sk = SKView()
+    var scene = SKScene()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +42,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         moodIndicator.layer.borderColor = #colorLiteral(red: 0.8858358305, green: 0.5235362993, blue: 0.4429179152, alpha: 1)
         word.image = UIImage(named: "roll")
         background.backgroundColor = #colorLiteral(red: 1, green: 0.9496994592, blue: 0.7835138326, alpha: 1)
-        audioCollection.stopPlayingAudio()
-        audioCollection.chimpStay.playAudio()
-        
-        bananaExplode()
-//        bananaConfetti()
         
         let pan = UIPanGestureRecognizer(target: self, action:#selector(self.pan))
         
@@ -55,9 +52,28 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         self.view.addGestureRecognizer(pan)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        wordAnimation()
+        // bananaExplosionScene()
+        bananaSpriteView.allowsTransparency = true
+        bananaSpriteView.backgroundColor = .clear
+        // scene preparation
+        scene = SKScene(size: bananaSpriteView.bounds.size)
+        scene.scaleMode = .aspectFit
+        scene.backgroundColor = .clear
+        bananaExplode()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 5, options: [.curveEaseInOut, .autoreverse , .repeat], animations: {
+//        wordAnimation()
+        audioCollection.stopPlayingAudio()
+        audioCollection.chimpStay.playAudio()
+    }
+    
+    func wordAnimation(){
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 5, options: [.curveEaseInOut, .autoreverse , .repeat, .beginFromCurrentState], animations: {
             self.word.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         })
     }
@@ -79,7 +95,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         switch gesture.state {
         case .began:
             startRotationAngle = angle(from: location)
-            moodLevel = Double .random(in: 50 ... 80)
+            moodLevel = Double .random(in: 200 ... 500)
             audioCollection.stopPlayingAudio()
             audioCollection.chimpAcrobat.playAudio()
             self.chimpImage.image = UIImage(named: "chimp_acrobat")
@@ -132,12 +148,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         audioCollection.stopPlayingAudio()
         print(self.moodLevel)
         if self.counterPerRotation >= self.moodLevel{
-            // celebaration
+            // celebration
             self.audioCollection.chimpCelebration.playAudio()
             self.audioCollection.circusCelebration.playAudio()
             self.chimpImage.image = UIImage(named: "chimp_celebration_1")
             self.word.image = UIImage(named: "yay")
-            bananaConfetti()
+            bananaExplode()
         } else{
             // reset
             print("reseting to initial state")
@@ -148,24 +164,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         }
     }
     
-    func bananaConfetti(){
-        let bananaEmitterUp = BananaEmitter.get(with: #imageLiteral(resourceName: "banana"), emissionLongitudeDegree: 0.0)
-        let bananaEmitterDown = BananaEmitter.get(with: #imageLiteral(resourceName: "banana"), emissionLongitudeDegree: 180.0)
-        bananaEmitterUp.emitterPosition = CGPoint(x: view.frame.width / 2, y: 376)
-        bananaEmitterUp.emitterShape = .line
-        bananaEmitterUp.emitterSize = CGSize(width: 151, height: 0)
-        bananaEmitterDown.emitterPosition = CGPoint(x: view.frame.width / 2, y: 520)
-        bananaEmitterDown.emitterShape = .line
-        bananaEmitterDown.emitterSize = CGSize(width: 50, height: 2)
-        view.layer.addSublayer(bananaEmitterUp)
-        view.layer.addSublayer(bananaEmitterDown)
-    }
     
     func bananaExplode(){
-        let emitter = SKEmitterNode(fileNamed: "BananaExplode.sks")!
-        emitter.position = CGPoint(x: view.frame.width / 2, y: 442)
-        addChild(<#T##childController: UIViewController##UIViewController#>)
-        emitter.removeFromParent()
+        let banana = SKEmitterNode(fileNamed: "BananaExplode.sks")
+        banana?.position = bananaSpriteView.center
+        
+        scene.addChild(banana!)
+        bananaSpriteView.presentScene(scene)
+        scene.removeFromParent()
     }
 }
 

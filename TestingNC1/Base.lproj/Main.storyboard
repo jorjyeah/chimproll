@@ -49,7 +49,7 @@
                         <outlet property="chimp" destination="To9-91-eRB" id="ZxN-Gx-Dp3"/>
                         <outlet property="topCurtain" destination="fI7-ht-ciH" id="GGH-td-liB"/>
                         <outlet property="viewOpening" destination="f3O-GH-ob1" id="V52-LL-NqA"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" identifier="segueToMainPage" modalTransitionStyle="crossDissolve" id="RbR-fN-Dlm"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="segueToMainPage" modalTransitionStyle="crossDissolve" id="RbR-fN-Dlm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPC-vA-tBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -68,11 +68,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pxv-Gk-ajv">
-                                        <rect key="frame" x="130" y="372" width="153" height="153"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7yg-PL-c8Z">
                                         <rect key="frame" x="-284" y="376" width="956" height="956"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -81,12 +76,25 @@
                                         <rect key="frame" x="-258" y="-416" width="930" height="930"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <skView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mUD-kD-yIc">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </skView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VpL-gp-Jrp">
+                                        <rect key="frame" x="93" y="108" width="228" height="228"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pxv-Gk-ajv">
+                                        <rect key="frame" x="130" y="372" width="153" height="153"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wpP-HE-fDB">
                                         <rect key="frame" x="132" y="376" width="151" height="144"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9r-UA-hd4">
-                                        <rect key="frame" x="35" y="68" width="46" height="38"/>
+                                        <rect key="frame" x="33" y="65" width="46" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Back" image="back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -95,14 +103,6 @@
                                             <action selector="backToOpening:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MGW-ef-axI"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VpL-gp-Jrp">
-                                        <rect key="frame" x="93" y="108" width="228" height="228"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <skView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="glk-Gr-tCZ">
-                                        <rect key="frame" x="117" y="358" width="180" height="180"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </skView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -114,8 +114,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="7PB-uG-CGP"/>
                     <connections>
+                        <outlet property="backButton" destination="d9r-UA-hd4" id="gZP-Sz-TY5"/>
                         <outlet property="background" destination="L6t-72-bmM" id="uvf-ry-1UK"/>
-                        <outlet property="bananaExplodeParticle" destination="glk-Gr-tCZ" id="b96-ao-9nu"/>
+                        <outlet property="bananaSpriteView" destination="mUD-kD-yIc" id="MBC-8a-dcx"/>
                         <outlet property="chimpImage" destination="wpP-HE-fDB" id="4hm-4m-SFV"/>
                         <outlet property="curtainBottom" destination="7yg-PL-c8Z" id="vWA-b6-DZU"/>
                         <outlet property="curtainTop" destination="cmd-Kf-Kts" id="NsO-ea-pfM"/>

@@ -12,7 +12,6 @@
 		B917CE262291B2B3000447BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B917CE242291B2B3000447BD /* Main.storyboard */; };
 		B917CE282291B2B5000447BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B917CE272291B2B5000447BD /* Assets.xcassets */; };
 		B917CE2B2291B2B5000447BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B917CE292291B2B5000447BD /* LaunchScreen.storyboard */; };
-		B918476A2297F2C20034C5B9 /* BananaEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91847692297F2C20034C5B9 /* BananaEmitter.swift */; };
 		B91E665E229314420090F513 /* OpeningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91E665D229314420090F513 /* OpeningController.swift */; };
 		B95F1334229859E600E4459F /* BananaExplode.sks in Resources */ = {isa = PBXBuildFile; fileRef = B95F1333229859E600E4459F /* BananaExplode.sks */; };
 		B982007722955A6000B53D43 /* AudioPlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B982007622955A6000B53D43 /* AudioPlayerModel.swift */; };
@@ -32,7 +31,6 @@
 		B917CE272291B2B5000447BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B917CE2A2291B2B5000447BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B917CE2C2291B2B5000447BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B91847692297F2C20034C5B9 /* BananaEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BananaEmitter.swift; sourceTree = "<group>"; };
 		B91E665D229314420090F513 /* OpeningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningController.swift; sourceTree = "<group>"; };
 		B95F1333229859E600E4459F /* BananaExplode.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BananaExplode.sks; sourceTree = "<group>"; };
 		B982007622955A6000B53D43 /* AudioPlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerModel.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 		B95F1337229869F000E4459F /* BananaParticle */ = {
 			isa = PBXGroup;
 			children = (
-				B91847692297F2C20034C5B9 /* BananaEmitter.swift */,
 				B95F1333229859E600E4459F /* BananaExplode.sks */,
 			);
 			path = BananaParticle;
@@ -208,7 +205,6 @@
 				B982007922955D8300B53D43 /* AudioCollection.swift in Sources */,
 				B982007722955A6000B53D43 /* AudioPlayerModel.swift in Sources */,
 				B91E665E229314420090F513 /* OpeningController.swift in Sources */,
-				B918476A2297F2C20034C5B9 /* BananaEmitter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +357,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jorjyeah.TestingNC1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jorjyeah.chimproll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -379,7 +375,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jorjyeah.TestingNC1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jorjyeah.chimproll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
