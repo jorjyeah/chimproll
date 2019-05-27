@@ -95,7 +95,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         switch gesture.state {
         case .began:
             startRotationAngle = angle(from: location)
-            moodLevel = Double .random(in: 100 ... 150)
+            moodLevel = Double .random(in: 70 ... 80)
             audioCollection.stopPlayingAudio()
             audioCollection.chimpAcrobat.playAudio()
             self.chimpImage.image = UIImage(named: "chimp_acrobat")
@@ -140,6 +140,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         } else if self.counterPerRotation >= self.moodLevel*0.75 && self.counterPerRotation < self.moodLevel{
             self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.9034691654, blue: 0.6462703339, alpha: 1)
         } else if self.counterPerRotation >= self.moodLevel{
+            self.word.image = UIImage(named: "yay")
             self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.8358077748, blue: 0.3983304795, alpha: 1)
         }
     }
@@ -152,12 +153,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
             self.audioCollection.chimpCelebration.playAudio()
             self.audioCollection.circusCelebration.playAudio()
             self.chimpImage.image = UIImage(named: "chimp_celebration_1")
-            self.word.image = UIImage(named: "yay")
             bananaExplode()
         } else{
             // reset
             print("reseting to initial state")
             chimpImage.image = UIImage(named: "chimp_stay")
+            self.word.image = UIImage(named: "roll")
             audioCollection.chimpStay.playAudio()
             counterPerRotation = 0
             moodIndicatorChanged()
