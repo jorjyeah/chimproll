@@ -95,7 +95,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         switch gesture.state {
         case .began:
             startRotationAngle = angle(from: location)
-            moodLevel = Double .random(in: 70 ... 80)
+            moodLevel = Double .random(in: 50 ... 70)
             audioCollection.stopPlayingAudio()
             audioCollection.chimpAcrobat.playAudio()
             self.chimpImage.image = UIImage(named: "chimp_acrobat")
@@ -131,13 +131,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
     }
     
     func moodIndicatorChanged(){
-        if self.counterPerRotation < self.moodLevel*0.4{
+        if self.counterPerRotation < self.moodLevel*0.2{
             self.word.image = UIImage(named: "roll")
             self.moodIndicator.layer.borderColor = #colorLiteral(red: 0.8858358305, green: 0.5235362993, blue: 0.4429179152, alpha: 1)
-        } else if self.counterPerRotation >= self.moodLevel*0.4 && self.counterPerRotation < self.moodLevel*0.75{
+        } else if self.counterPerRotation >= self.moodLevel*0.2 && self.counterPerRotation < self.moodLevel*0.7{
             self.word.image = UIImage(named: "faster")
             self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.7878941623, blue: 0.624411387, alpha: 1)
-        } else if self.counterPerRotation >= self.moodLevel*0.75 && self.counterPerRotation < self.moodLevel{
+        } else if self.counterPerRotation >= self.moodLevel*0.7 && self.counterPerRotation < self.moodLevel{
             self.moodIndicator.layer.borderColor = #colorLiteral(red: 1, green: 0.9034691654, blue: 0.6462703339, alpha: 1)
         } else if self.counterPerRotation >= self.moodLevel{
             self.word.image = UIImage(named: "yay")
