@@ -82,7 +82,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         let deltaY = location.y - view.center.y
         let deltaX = location.x - view.center.x
         let angle = atan2(deltaY, deltaX) * 180 / .pi
-        counterPerRotation += 0.1
+        counterPerRotation += 0.07
         return angle < 0 ? abs(angle) : 360 - angle
     }
     
@@ -95,7 +95,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVAudioPlay
         switch gesture.state {
         case .began:
             startRotationAngle = angle(from: location)
-            moodLevel = Double .random(in: 200 ... 500)
+            moodLevel = Double .random(in: 100 ... 150)
             audioCollection.stopPlayingAudio()
             audioCollection.chimpAcrobat.playAudio()
             self.chimpImage.image = UIImage(named: "chimp_acrobat")

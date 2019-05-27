@@ -11,6 +11,7 @@ import AVFoundation
 
 class OpeningController: UIViewController, AVAudioPlayerDelegate{
 
+
     @IBOutlet weak var viewOpening: UIView!
     @IBOutlet weak var topCurtain: UIImageView!
     @IBOutlet weak var chimp: UIImageView!
@@ -47,6 +48,26 @@ class OpeningController: UIViewController, AVAudioPlayerDelegate{
             self.chimp.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         })
     }
+    
+//    func testingScale(){
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.testing.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+//            self.testingLabel.text = "Breath In"
+//        }){
+//            (finished) in
+//            if finished{
+//                UIView.animate(withDuration: 0.5, animations: {
+//                    self.testing.transform = CGAffineTransform(scaleX: 1, y: 1)
+//                    self.testingLabel.text = "Breath Out"
+//                }){
+//                    (finished) in
+//                    if finished{
+//                        self.testingScale()
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     @objc func handleTap(sender : UITapGestureRecognizer ) {
         guard sender.view != nil else { return }
